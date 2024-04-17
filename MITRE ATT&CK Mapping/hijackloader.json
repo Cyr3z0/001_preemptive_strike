@@ -1,0 +1,223 @@
+{
+	"name": "HiJackLoader",
+	"versions": {
+		"attack": "14",
+		"navigator": "4.9.4",
+		"layer": "4.5"
+	},
+	"domain": "enterprise-attack",
+	"description": "",
+	"filters": {
+		"platforms": [
+			"Windows",
+			"PRE",
+			"Containers",
+			"Office 365",
+			"SaaS",
+			"Google Workspace",
+			"IaaS",
+			"Azure AD",
+			"Network"
+		]
+	},
+	"sorting": 0,
+	"layout": {
+		"layout": "side",
+		"aggregateFunction": "average",
+		"showID": false,
+		"showName": true,
+		"showAggregateScores": false,
+		"countUnscored": false,
+		"expandedSubtechniques": "annotated"
+	},
+	"hideDisabled": false,
+	"techniques": [
+		{
+			"techniqueID": "T1106",
+			"tactic": "execution",
+			"color": "#bcbddc",
+			"comment": "HijackLoader uses direct syscalls and the following APIs to perform bypasses and injections: WriteFileW, ReadFile, CreateFileW, LoadLibraryW, GetProcAddress, NtDelayExecution, RtlDecompressBuffer, CreateProcessW, GetModuleHandleW, CopyFileW, VirtualProtect, NtProtectVirtualMemory, NtWriteVirtualMemory, NtResumeThread, NtSuspendThread, NtGetContextThread, NtSetContextThread, NtCreateTransaction, RtlSetCurrentTransaction, NtRollbackTransaction, NtCreateSection, NtMapViewOfSection, NtUnMapViewOfSection, NtWriteFile, NtReadFile, NtCreateFile and CreatePipe.",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1140",
+			"tactic": "defense-evasion",
+			"color": "#bcbddc",
+			"comment": "HijackLoader utilizes XOR mechanisms to decrypt the downloaded stage.\n\nHijackLoader utilizes RtlDecompressBuffer to LZ decompress the downloaded stage.",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1562",
+			"tactic": "defense-evasion",
+			"color": "#bcbddc",
+			"comment": "HijackLoader and its stages use Heaven’s Gate and remap x64 ntdll to bypass user space hooks.",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1562.001",
+			"tactic": "defense-evasion",
+			"color": "#bcbddc",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1055",
+			"tactic": "defense-evasion",
+			"color": "#bcbddc",
+			"comment": "HijackLoader and its stages implement a process hollowing technique variation to inject in cmd.exe and logagent.exe.",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": true
+		},
+		{
+			"techniqueID": "T1055",
+			"tactic": "privilege-escalation",
+			"color": "#bcbddc",
+			"comment": "HijackLoader and its stages implement a process hollowing technique variation to inject in cmd.exe and logagent.exe.",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1055.013",
+			"tactic": "defense-evasion",
+			"color": "#bcbddc",
+			"comment": "The HijackLoader shellcode implements a process doppelgänging technique variation (transacted section hollowing) to load the final stage in logagent.exe.",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1055.013",
+			"tactic": "privilege-escalation",
+			"color": "#bcbddc",
+			"comment": "The HijackLoader shellcode implements a process doppelgänging technique variation (transacted section hollowing) to load the final stage in logagent.exe.",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1055.012",
+			"tactic": "defense-evasion",
+			"color": "#bcbddc",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1055.012",
+			"tactic": "privilege-escalation",
+			"color": "#bcbddc",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1620",
+			"tactic": "defense-evasion",
+			"color": "#bcbddc",
+			"comment": "HijackLoader reflectively loads the downloaded shellcode in the running process by loading and stomping the mshtml.dll module using the LoadLibraryW and VirtualProtect APIs.",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1016",
+			"tactic": "discovery",
+			"color": "#bcbddc",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": true
+		},
+		{
+			"techniqueID": "T1016.001",
+			"tactic": "discovery",
+			"color": "#bcbddc",
+			"comment": "This variant of HijackLoader connects to a remote server to check if the machine is connected to the internet by using the WinHttp API (WinHttpOpenRequest and WinHttpSendRequest).",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1204",
+			"tactic": "execution",
+			"color": "#bcbddc",
+			"comment": "The sample is a backdoored version of streaming_client.exe, with the Entry Point redirected to a malicious stub.",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": true
+		},
+		{
+			"techniqueID": "T1204.002",
+			"tactic": "execution",
+			"color": "#bcbddc",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1027",
+			"tactic": "defense-evasion",
+			"color": "#bcbddc",
+			"comment": "HijackLoader drops XOR encrypted files to the %APPDATA% subfolders to store the downloaded stages.\n",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": true
+		},
+		{
+			"techniqueID": "T1027.007",
+			"tactic": "defense-evasion",
+			"color": "#bcbddc",
+			"comment": "HijackLoader and its stages hide some of the important imports from the IAT by dynamically retrieving kernel32 and ntdll API addresses. It does this by parsing PEB->PEB_LDR_DATA  and retrieving the function addresses.",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		}
+	],
+	"gradient": {
+		"colors": [
+			"#ff6666ff",
+			"#ffe766ff",
+			"#8ec843ff"
+		],
+		"minValue": 0,
+		"maxValue": 100
+	},
+	"legendItems": [],
+	"metadata": [],
+	"links": [],
+	"showTacticRowBackground": false,
+	"tacticRowBackground": "#dddddd",
+	"selectTechniquesAcrossTactics": true,
+	"selectSubtechniquesWithParent": false,
+	"selectVisibleTechniques": false
+}
